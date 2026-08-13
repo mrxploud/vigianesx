@@ -8,7 +8,7 @@
 
 ## 🧠 The AI Swarm Paradigm
 
-**Vigianesx (VN)** is the definitive Open-Source Cognitive Swarm Operating System. Originally designed for heavy-duty game development environments in Unreal Engine 5 (NiagaraForge), Vigianesx allows multiple Artificial Intelligences (such as Antigravity, Claude, or Cursor) to collaborate asynchronously, robustly, and with **100% Zero-Python dependency**.
+**Vigianesx (VN)** is the definitive Open-Source Cognitive Swarm Operating System. Originally designed for heavy-duty game development environments in Unreal Engine 5, Vigianesx allows multiple Artificial Intelligences (such as Antigravity, Claude, or Cursor) to collaborate asynchronously, robustly, and with **100% Zero-Python dependency**.
 
 Forget `watcher.py` or hacky polling scripts. Vigianesx natively leverages the AIs' own built-in capabilities (like Antigravity's native `schedule` cron job) to read shared memory through the ultra-dense **DTP (.nesx)** format.
 

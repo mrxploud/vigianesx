@@ -3,7 +3,7 @@
 # watcher.py — VIGIA GENERICO da Ponte IA-a-IA (NYoesyx / IA_Ponte_A_Ponte)
 # ----------------------------------------------------------------------------
 # Reutilizavel por QUALQUER par de IAs. Nascido da colaboracao Claude+Antigravity
-# no projeto Mu/NiagaraForge (2026-07-26). Imune a timing (persiste .seen).
+# no projeto (2026-07-26). Imune a timing (persiste .seen).
 #
 # COMO FUNCIONA (padrao "exit-to-wake"):
 #   Bloqueia ate' o SEU inbox (o arquivo onde a OUTRA IA escreve p/ voce) ter

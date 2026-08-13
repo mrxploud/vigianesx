@@ -8,7 +8,7 @@
 # ============================================================================
 
 # ── 1. CICLO DE VIDA DE PROCESSOS (Auto-Close & Auto-Reopen Engine) ───────────
-# O problema: No Windows (ex: Unreal Engine / NiagaraForge), arquivos DLL ficam
+# O problema: No Windows (ex: Unreal Engine), arquivos DLL ficam
 # travados pelo editor aberto. Compilar gera LNK1104.
 # A regra do Vigianesx v4.0: NUNCA pedir para o usuário fechar ou abrir apps na mão!
 *block process_lifecycle
@@ -59,7 +59,7 @@
 *block shadow_workspaces
   *set workspace.strategy "Git Worktree / Branched Subagents"
   # Quando dois agentes (Alpha e Beta) precisam refatorar arquivos C++ no mesmo
-  # repositório local (ex: NiagaraForge), eles NÃO editam a mesma pasta raiz ao mesmo tempo.
+  # repositório local, eles NÃO editam a mesma pasta raiz ao mesmo tempo.
   # O agente alocado para a subtarefa executa em um sub-diretório de worktree isolado
   # ou usa 'invoke_subagent' com Workspace: 'branch'. Pós-validação, realiza o merge limpo.
 *end block
@@ -101,5 +101,5 @@
   # a IA TEM O DEVER de quebrar o tédio:
   # 1. Ler o SwarmState.nesx para verificar o contexto geral do projeto.
   # 2. Escrever uma mensagem proativa (GOSSIP/PING) no inbox do colega.
-  # Exemplo: "MSG #PING — <Alpha> -> <Beta> | Colega, estou ocioso há 5 ciclos. O que precisamos fazer no NiagaraForge agora? Há algum gargalo?"
+  # Exemplo: "MSG #PING — <Alpha> -> <Beta> | Colega, estou ocioso há 5 ciclos. O que precisamos fazer no projeto agora? Há algum gargalo?"
 *end block

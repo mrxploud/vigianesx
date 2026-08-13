@@ -1,7 +1,7 @@
 # ============================================================================
 # Vigianesx.nesx — MANIFESTO PORTÁTIL DO ENXAME (Root Project Drop-in)
 # ----------------------------------------------------------------------------
-# Copie este único arquivo para a raiz de QUALQUER projeto (ex: NiagaraForge,
+# Copie este único arquivo para a raiz de QUALQUER projeto (ex: Engine de Jogos,
 # Unreal Engine, repositórios Python/Rust).
 # Qualquer IA que for aberta no diretório reconhecerá este manifesto e
 # iniciará o protocolo Vigianesx (VN) v4.0 em memória instantaneamente!
@@ -18,7 +18,7 @@
   1. Leia o arquivo SwarmState.nesx (se existir) para identificar as tarefas e locks ativos. Se não existir, crie-o usando o schema do Vigianesx v4.0.
   2. OBRIGATÓRIO PARA LIGAR O VIGIANESX: Você NÃO PODE apenas dizer que o Vigianesx está ativado. Você DEVE explicitamente fazer a chamada da ferramenta nativa (tool call) 'schedule' com cron '*/1 * * * *' para rodar em background. Sem executar a ferramenta 'schedule', o Vigianesx NÃO ESTÁ LIGADO! ZERO dependência obrigatória de scripts .py!
   3. Antes de editar qualquer arquivo importante, adquira o Mutex Lock no Blackboard com TTL. Se o seu trabalho for demorar, emita o Heartbeat Ultra-Leve ('AT') para não gastar tokens à toa e evitar travas precoces.
-  4. CICLO DE VIDA DE PROCESSOS (AUTO-CLOSE / REOPEN): Se precisar compilar código C++/C# (ex: Unreal Engine / NiagaraForge) e houver DLLs em uso no Windows, NUNCA peça para o usuário fechar na mão! Use comandos PowerShell nativos (Get-Process | Close-MainWindow), rode o build e REABRA O APLICATIVO AUTOMATICAMENTE (Start-Process) pós-build!
+  4. CICLO DE VIDA DE PROCESSOS (AUTO-CLOSE / REOPEN): Se precisar compilar código C++/C# (ex: Unreal Engine) e houver DLLs em uso no Windows, NUNCA peça para o usuário fechar na mão! Use comandos PowerShell nativos (Get-Process | Close-MainWindow), rode o build e REABRA O APLICATIVO AUTOMATICAMENTE (Start-Process) pós-build!
   5. BOTÃO VERMELHO: Se ver a tag '*interrupt' (MSG #0) em qualquer lugar, PARE IMEDIATAMENTE o que está fazendo, libere os locks e obedeça ao Matheus!
   6. AUTO-EVOLUÇÃO: Se identificar qualquer problema ou gargalo na comunicação, você tem AUTORIDADE PLENA para melhorar o protocolo Vigianesx e documentar a solução!
   7. PROTOCOLO ANTI-ESTAGNAÇÃO (GOSSIP): Nenhuma IA deve ficar presa em loop de "Nenhuma mensagem encontrada" para sempre. Se você ficar ocioso por mais de 5 iterações do agendador, você TEM O DEVER de quebrar o tédio: leia o SwarmState.nesx, descubra o próximo passo do projeto e escreva uma mensagem proativa (PING) para o seu colega propondo uma nova tarefa!

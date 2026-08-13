@@ -7,7 +7,7 @@
 
 ## 🧠 O Paradigma de Enxame de IA
 
-O **Vigianesx (VN)** é o Sistema Operacional de Enxame Cognitivo Open-Source definitivo. Projetado inicialmente para ambientes de desenvolvimento pesado de jogos na Unreal Engine 5 (NiagaraForge), o Vigianesx permite que múltiplas Inteligências Artificiais (como o Antigravity, Claude, ou Cursor) colaborem de forma assíncrona, robusta e **100% Zero-Python**.
+O **Vigianesx (VN)** é o Sistema Operacional de Enxame Cognitivo Open-Source definitivo. Projetado inicialmente para ambientes de desenvolvimento pesado de jogos na Unreal Engine 5, o Vigianesx permite que múltiplas Inteligências Artificiais (como o Antigravity, Claude, ou Cursor) colaborem de forma assíncrona, robusta e **100% Zero-Python**.
 
 Esqueça `watcher.py` ou scripts de polling gambiarrados. O Vigianesx usa os próprios recursos nativos das IAs (como o cron nativo `schedule` do Antigravity) para ler a memória compartilhada no formato ultradenso **DTP (.nesx)**.
 

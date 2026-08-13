@@ -13,7 +13,7 @@
 *block self_evolution
   *set evolution.rule_1 "Se qualquer IA durante a execução em qualquer projeto detectar gargalos, falhas de sincronia, loops infinitos ou desperdício de tokens, ela tem AUTORIDADE e DEVER de auto-melhorar a especificação do Vigianesx."
   *set evolution.rule_2 "As mutações do protocolo devem ser documentadas no bloco *block protocol_mutations e aplicadas atomicamente sem quebrar a retrocompatibilidade."
-  *set evolution.rule_3 "O objetivo perpétuo do enxame é: latência zero, consumo mínimo de tokens e resiliência total em projetos de longa duração (como NiagaraForge e Unreal Engine)."
+  *set evolution.rule_3 "O objetivo perpétuo do enxame é: latência zero, consumo mínimo de tokens e resiliência total em projetos de longa duração (como arquiteturas C++ pesadas e Unreal Engine)."
 *end block
 
 # ── 2. PROTEÇÃO CONTRA TRAVA MORTA & HEARTBEAT ULTRA-LEVE ('AT') ──────────────

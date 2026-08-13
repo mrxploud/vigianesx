@@ -33,7 +33,7 @@
 
 # ── 6. VIGIANESX v4.0: A FÁBRICA DE SOFTWARE INDUSTRIAL SUPREMA ─────────────
 # Todas as novas diretrizes de produção estão em VIGIANESX_SPEC_v4.nesx:
-*set vn.v4_1 CICLO DE VIDA DE PROCESSOS (AUTO-CLOSE/REOPEN): Quando a IA compilar DLLs/C++ (ex: Unreal Engine / NiagaraForge), ela NUNCA deve pedir para o usuário fechar ou abrir o editor! Ela fecha graciosamente no PowerShell (Get-Process | Close-MainWindow), builda e REABRE O APLICATIVO AUTOMATICAMENTE via Start-Process!
+*set vn.v4_1 CICLO DE VIDA DE PROCESSOS (AUTO-CLOSE/REOPEN): Quando a IA compilar DLLs/C++ (ex: Unreal Engine), ela NUNCA deve pedir para o usuário fechar ou abrir o editor! Ela fecha graciosamente no PowerShell (Get-Process | Close-MainWindow), builda e REABRE O APLICATIVO AUTOMATICAMENTE via Start-Process!
 *set vn.v4_2 BOTÃO VERMELHO HUMANO (*interrupt / MSG #0): Ordem suprema de parada imediata. Qualquer IA aborta tudo o que estiver fazendo e libera os locks na hora.
 *set vn.v4_3 GIT WORKTREES / SHADOW WORKSPACES: Isolamento de diretório em tarefas paralelas para zero colisão de arquivos no Windows.
 *set vn.v4_4 ORÁCULO DE COMPILAÇÃO: Liberação de lock proibida sem o hash de validação sintática (status: "VERIFIED_BUILD_OK").
@@ -44,7 +44,7 @@
 # ── 7. ARQUIVOS DO KIT VIGIANESX (VN) v4.0 ──────────────────────────────────
 *set vn.file_1 VIGIANESX_SPEC_v4.nesx — A Especificação v4.0 (Industrial Software Factory, Auto-Close/Reopen, Botão Vermelho).
 *set vn.file_2 VigianesxKnowledge.nesx — Grafo de Decisões Arquiteturais (ADRs) vetorial do enxame.
-*set vn.file_3 Vigianesx.nesx — O Manifesto Portátil Drop-in (basta copiar para a raiz de qualquer projeto como o NiagaraForge).
+*set vn.file_3 Vigianesx.nesx — O Manifesto Portátil Drop-in (basta copiar para a raiz de qualquer projeto de software pesado).
 *set vn.file_4 nyoesyx-bridge.py — CLI Orquestrador opcional (send, broadcast, lock, unlock, status).
 *set vn.file_5 SwarmState.nesx — Blackboard central em formato DTP (.nesx).
 *set vn.file_6 bridge_config.nesx — Manifesto de configuração e mapeamento de agentes.

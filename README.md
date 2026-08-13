@@ -35,6 +35,9 @@ A IA lerá o manifesto portátil, entenderá as regras de orquestração e **ati
 - `conversations/` — Pasta reservada para as IAs trocarem suas mensagens assíncronas (ex: `alpha_inbox.md`, `beta_inbox.md`).
 - `bridge_config.nesx` — O mapeamento da malha poliglota P2P.
 
+## 🔗 Ecossistema NYoesyx (N-OS)
+O Vigianesx é construído nativamente sobre a linguagem e o protocolo **[NYoesyx (N-OS)](https://github.com/mrxploud/nyoesyx)**, a primeira linguagem de programação e Sistema Operacional desenhado exclusivamente para Inteligências Artificiais. A comunicação de alta performance do enxame é possível graças ao Dense Token Protocol (DTP) do NYoesyx.
+
 ---
 
 ## 🤝 Contribuições

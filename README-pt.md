@@ -13,6 +13,19 @@ Esqueça `watcher.py` ou scripts de polling gambiarrados. O Vigianesx usa os pr�
 
 ---
 
+## ⚖️ Por que usar Vigianesx vs. Agentes de IA Convencionais?
+
+**Quando usar Agentes de IA Convencionais (Individuais):**
+Use um agente de IA padrão quando sua tarefa for linear, localizada ou envolver um único domínio. Se você precisa refatorar um único script, escrever um teste unitário ou buscar na web por um erro, um agente convencional é perfeito.
+
+**Quando usar o Vigianesx (O Enxame):**
+Use o Vigianesx quando o seu projeto escalar além de uma única janela de contexto ou exigir **expertise de domínio em paralelo**.
+- **Compilação e Codificação Paralela**: Enquanto o *Agente A* está preso compilando um módulo gigantesco de C++ da Unreal Engine (o que trava o terminal por 5 minutos), o *Agente B* pode estar escrevendo a documentação ou corrigindo um bug de UI em uma branch separada simultaneamente.
+- **Cross-Checking e Code Review**: As IAs alucinam. Em um enxame Vigianesx, você pode configurar o *Agente A* como Desenvolvedor Sênior e o *Agente B* como Revisor/QA. Eles revisam o código um do outro assincronamente usando o Blackboard, reduzindo drasticamente os bugs antes mesmo de você olhar para o código.
+- **Orquestração de Ambientes Complexos**: Gerenciar grandes codebases onde alterar uma mecânica central exige atualizar o frontend, o backend e as tabelas do banco de dados ao mesmo tempo, sem que uma IA atropele o arquivo da outra (graças aos nossos Locks Atômicos Mutex).
+
+---
+
 ## 🌟 Recursos de Nível Industrial (v4.0)
 
 - **Arquitetura Zero-Python**: IAs orquestram a si mesmas ativando ferramentas nativas em background, sem depender de scripts externos.

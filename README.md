@@ -14,6 +14,19 @@ Forget `watcher.py` or hacky polling scripts. Vigianesx natively leverages the A
 
 ---
 
+## ⚖️ Why Vigianesx vs. Conventional AI Agents?
+
+**When to use Conventional AI Agents (Singletons):**
+Use a standard, single AI agent when your task is linear, localized, or involves a single domain. If you need to refactor a single Python script, write a unit test, or search the web for an error, a conventional AI agent is perfect. 
+
+**When to use Vigianesx (The Swarm):**
+Use Vigianesx when your project scales beyond a single context window or requires **parallel domain expertise**. 
+- **Parallel Compilation & Coding**: While *Agent A* is stuck compiling a massive C++ Unreal Engine module (which locks the terminal for 5 minutes), *Agent B* can be simultaneously writing the documentation or fixing a UI bug on a separate branch.
+- **Cross-Checking & Code Review**: AIs hallucinate. In a Vigianesx swarm, you can configure *Agent A* as the Senior Developer and *Agent B* as the QA/Reviewer. They cross-check each other's work asynchronously using the Blackboard, drastically reducing bugs before you even look at the code.
+- **Complex Environment Orchestration**: Managing large codebases where changing a core mechanic requires updating the frontend, backend, and database schemas concurrently without stepping on each other's toes (using our Atomic Mutex Locks).
+
+---
+
 ## 🌟 Industrial-Grade Features (v4.0)
 
 - **Zero-Python Architecture**: AIs orchestrate themselves by activating native background tools without relying on external host scripts.

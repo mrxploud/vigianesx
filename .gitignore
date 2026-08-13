@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+
+# Logs e arquivos temporários
+*.log
+*.tmp
+
+# Inboxes / Sessões Locais
+# Não versionamos as conversas locais das IAs para o repositório público!
+conversations/*.md
+conversations/*.txt
+
+# Bloqueios (caso sejam criados)
+*.lock

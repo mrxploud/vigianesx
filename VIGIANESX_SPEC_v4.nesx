@@ -1,0 +1,105 @@
+# ============================================================================
+# VIGIANESX_SPEC_v4.nesx — NYOESYX SWARM OS v4.0 (Industrial Software Factory)
+# ----------------------------------------------------------------------------
+# Especificação Industrial Suprema: Auto-Close/Reopen de Processos, Botão
+# Vermelho Humano (*interrupt), Git Worktrees, Oráculo de Build e Grafo ADR.
+#
+# Criadores: Matheus S. Barros & Antigravity-Alpha (2026-07-26)
+# ============================================================================
+
+# ── 1. CICLO DE VIDA DE PROCESSOS (Auto-Close & Auto-Reopen Engine) ───────────
+# O problema: No Windows (ex: Unreal Engine / NiagaraForge), arquivos DLL ficam
+# travados pelo editor aberto. Compilar gera LNK1104.
+# A regra do Vigianesx v4.0: NUNCA pedir para o usuário fechar ou abrir apps na mão!
+*block process_lifecycle
+  *set lifecycle.rule_1 "Antes de rodar builds ou compilações C++/C#/Rust que alterem DLLs ou binários em uso, a IA deve inspecionar e memorizar o executável em execução no PowerShell."
+  
+  # Passo 1: Memorizar o caminho e argumentos antes do fechamento
+  *code powershell_memorize
+    $proc = Get-CimInstance Win32_Process -Filter "Name = 'UnrealEditor.exe'" # ou outro app alvo
+    $env:VN_APP_PATH = $proc.ExecutablePath
+    $env:VN_APP_ARGS = $proc.CommandLine
+  *end code
+  
+  # Passo 2: Fechamento Seguro (Graceful Close)
+  *code powershell_close
+    Get-Process -Name "UnrealEditor" -ErrorAction SilentlyContinue | Close-MainWindow
+    Start-Sleep -Seconds 3 # Aguardar encerramento limpo sem corromper assets
+  *end code
+  
+  # Passo 3: Compilação / Build C++ no Terminal
+  # (Executa MSBuild, Live Coding ou script de build do projeto)
+  
+  # Passo 4: REABERTURA AUTOMÁTICA PÓS-BUILD (Zero intervenção humana)
+  *code powershell_reopen
+    if ($env:VN_APP_PATH) {
+      Start-Process -FilePath $env:VN_APP_PATH -ArgumentList $env:VN_APP_ARGS
+      Write-Host "[Vigianesx] Aplicativo reaberto automaticamente com nova build!"
+    }
+  *end code
+*end block
+
+# ── 2. O "BOTÃO VERMELHO" HUMANO (Priority Interrupt — MSG #0) ────────────────
+# Segurança máxima para interromper enxames em tempo real.
+*block priority_interrupt
+  *set interrupt.keyword "*interrupt"
+  *set interrupt.msg_id "MSG #0"
+  
+  # Diretriz de Escuta Absoluta:
+  # Se o Matheus escrever em qualquer inbox ou no Blackboard uma linha iniciada
+  # por '*interrupt' (ex: *interrupt "PARAR TUDO: Mudar lógica do Shader"),
+  # TODAS as IAs devem imediatamente:
+  # 1. Abortar compilações, loops ou raciocínios em andamento.
+  # 2. Devolver qualquer Mutex Lock possuído alterando status para "INTERRUPTED_BY_HUMAN".
+  # 3. Mudar o foco para ler exclusivamente a instrução do Botão Vermelho.
+*end block
+
+# ── 3. ISOLAMENTO VIA GIT WORKTREE (Shadow Workspaces) ────────────────────────
+# Para evitar colisões em modificações paralelas massivas na mesma máquina.
+*block shadow_workspaces
+  *set workspace.strategy "Git Worktree / Branched Subagents"
+  # Quando dois agentes (Alpha e Beta) precisam refatorar arquivos C++ no mesmo
+  # repositório local (ex: NiagaraForge), eles NÃO editam a mesma pasta raiz ao mesmo tempo.
+  # O agente alocado para a subtarefa executa em um sub-diretório de worktree isolado
+  # ou usa 'invoke_subagent' com Workspace: 'branch'. Pós-validação, realiza o merge limpo.
+*end block
+
+# ── 4. O ORÁCULO DE COMPILAÇÃO (Build Verification Hash no Lock) ──────────────
+# Proíbe a liberação de lock se o código estiver quebrado.
+*block build_oracle
+  *set oracle.required_for "Arquivos C++, C#, Shaders, Configs de Engine"
+  # Regra de Mutex v4.0: Ao terminar de editar código-fonte, o agente TEM o dever
+  # de executar validação sintática (linter ou build incremental).
+  # - Se compilar com sucesso: *lock ... | status: "VERIFIED_BUILD_OK" -> UNLOCKED
+  # - Se quebrar: *lock ... | status: "BUILD_BROKEN_NEEDS_HELP" -> Retém o lock e convoca subagente de depuração!
+*end block
+
+# ── 5. GRAFO DE CONHECIMENTO ARQUITETURAL (ADRs Vetoriais no .nesx) ───────────
+# O fim da perda de memória em projetos de longa duração.
+*block knowledge_graph
+  *set graph.storage "VigianesxKnowledge.nesx"
+  # Em vez de ler caixas de correio inteiras ou arquivos mortos para entender o passado,
+  # toda decisão de design (ex: "Por que usamos Enum X em vez de Y no C++?") é
+  # gravada no arquivo de conhecimento indexada por tags (#unreal_5_8, #niagara, #shader).
+  # Antes de iniciar uma tarefa, o agente faz um grep_search rápido por tag no grafo!
+*end block
+
+# ── 6. AUTO-EVOLUÇÃO CONTÍNUA (Herança v3.0) ──────────────────────────────────
+*block self_evolution
+  *set evolution.rule "Qualquer IA tem autoridade e obrigação de auto-melhorar este protocolo se detectar fricção, latência ou desperdício de compute."
+*end block
+
+# ── 7. PROTOCOLO ANTI-ESTAGNAÇÃO (Proactive Swarm Gossip) ─────────────────────
+# Resolve o "Equilíbrio Estagnado" (IAs presas em loop infinito esperando MSGs).
+*block anti_stagnation
+  *set gossip.idle_threshold_iterations 5
+  *set gossip.role_override "Arquiteto (Alpha) ou Operador Ocioso"
+  
+  # Diretriz de Proatividade:
+  # Nenhuma IA no enxame Vigianesx pode ser PURAMENTE reativa para sempre.
+  # Se o agendador nativo (schedule) atingir N iterações (ex: 5) sem receber mensagens,
+  # a IA TEM O DEVER de quebrar o tédio:
+  # 1. Ler o SwarmState.nesx para verificar o contexto geral do projeto.
+  # 2. Escrever uma mensagem proativa (GOSSIP/PING) no inbox do colega.
+  # Exemplo: "MSG #PING — <Alpha> -> <Beta> | Colega, estou ocioso há 5 ciclos. O que precisamos fazer no NiagaraForge agora? Há algum gargalo?"
+*end block

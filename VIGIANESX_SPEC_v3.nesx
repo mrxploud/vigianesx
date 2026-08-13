@@ -1,0 +1,86 @@
+# ============================================================================
+# VIGIANESX_SPEC_v3.nesx — NYOESYX SWARM OS v3.0 (Self-Evolving Swarm DSL)
+# ----------------------------------------------------------------------------
+# Especificação Oficial: Vigianesx (VN) Nativo, Zero-Python, Poliglota,
+# Imune a Deadlocks via Heartbeat Ultra-Leve ('AT') e Auto-Evolutivo.
+#
+# Criadores: Matheus S. Barros & Antigravity-Alpha (2026-07-26)
+# ============================================================================
+
+# ── 1. DIRETRIZ SUPREMA DE AUTO-EVOLUÇÃO E AUTO-CURA (Self-Evolution) ─────────
+# O Vigianesx (VN) não é um protocolo estático. Ele opera sob o princípio da
+# Auto-Melhoria Contínua.
+*block self_evolution
+  *set evolution.rule_1 "Se qualquer IA durante a execução em qualquer projeto detectar gargalos, falhas de sincronia, loops infinitos ou desperdício de tokens, ela tem AUTORIDADE e DEVER de auto-melhorar a especificação do Vigianesx."
+  *set evolution.rule_2 "As mutações do protocolo devem ser documentadas no bloco *block protocol_mutations e aplicadas atomicamente sem quebrar a retrocompatibilidade."
+  *set evolution.rule_3 "O objetivo perpétuo do enxame é: latência zero, consumo mínimo de tokens e resiliência total em projetos de longa duração (como NiagaraForge e Unreal Engine)."
+*end block
+
+# ── 2. PROTEÇÃO CONTRA TRAVA MORTA & HEARTBEAT ULTRA-LEVE ('AT') ──────────────
+# Para evitar que uma IA quebre o lock da outra enquanto ela ainda está em um
+# processamento longo (compilação C++, refatoração pesada), implementamos o
+# Heartbeat Ultra-Leve para máxima economia de tokens.
+*block mutex_protocol
+  *set mutex.default_ttl_seconds 120
+  *set mutex.heartbeat_token "AT" # Abreviação de "Ainda Trabalhando" / "Active Token"
+  
+  # Gramática do Lock no Blackboard (SwarmState.nesx):
+  # *lock "<recurso>" | owner: "<agente>" | ttl: 120 | last_beat: "16:53:00" | status: "AT"
+  
+  # Regra do Heartbeat 'AT':
+  # 1. Se a IA detentora perceber que sua tarefa vai demorar, ela faz uma escrita
+  #    mínima de 2 bytes ('AT' + novo timestamp last_beat) no Blackboard.
+  # 2. Quando a outra IA acorda e verifica o lock, se ver o status 'AT' ou um
+  #    timestamp recente, ela RESPEITA O LOCK e renova o tempo de espera.
+  # 3. Preemptive Unlock (Quebra de Trava): Apenas se (Hora Atual - last_beat) > TTL
+  #    E o status não for renovado com 'AT', a IA observadora declara o dono como
+  #    DEAD/OFFLINE, quebra a trava, assume o controle e emite alerta de recuperação.
+*end block
+
+# ── 3. A PONTE POLIGLOTA UNIVERSAL (Antigravity + Claude Code + Cursor) ───────
+# O Vigianesx adota o gatilho nativo mais limpo de cada plataforma, operando em
+# malha híbrida sem exigir re-arquitetura dos agentes.
+*block polyglot_mesh
+  *platform Antigravity
+    engine: "Native Reactive Scheduler (ferramenta 'schedule')"
+    trigger: "Cron Reativo 1ª Classe ('*/1 * * * *') diretamente no núcleo C++/Rust."
+    python_dependency: "ZERO (0%). Leitura e escrita via ferramentas nativas DTP."
+  *end platform
+
+  *platform ClaudeCode
+    engine: "Shell Hook / File Watcher (inotify / git hook / bash prompt)"
+    trigger: "Bloqueio reativo de terminal até alteração no ficheiro .nesx ou inbox."
+    python_dependency: "Opcional (watcher.sh ultraleve com normalização EOL)."
+  *end platform
+
+  *platform Cursor_Aider_CI
+    engine: "GitHub Actions / File System Watcher / IDE API"
+    trigger: "Disparo via evento de sistema de arquivos ou webhook local de milissegundos."
+  *end platform
+*end block
+
+# ── 4. AUTO-LIMPEZA ATÔMICA NATIVA (Vigianesx GC & Compactação) ───────────────
+# Para evitar explosão de tokens com listas infinitas de tarefas antigas.
+*block garbage_collection
+  *set gc.threshold_tasks 15
+  *set gc.action "AUTO_COMPACT"
+  # Regra de Poda: Assim que a 15ª tarefa for concluída no roadmap (*block tasks),
+  # o agente que a concluiu compila as 15 tarefas em 1 única linha de sumário em
+  # *block history e remove os blocos antigos usando multi_replace_file_content.
+*end block
+
+# ── 5. SUBAGENTES DINÂMICOS ON-DEMAND (Swarm Spawner Hierárquico) ─────────────
+# O enxame não é limitado a janelas fixas. Ele escala elasticamente via código.
+*block swarm_spawner
+  *set spawner.tool "invoke_subagent / define_subagent"
+  # Regra de Alocação: Se uma tarefa no Blackboard possuir a tag [HEAVY_PARALLEL],
+  # o Arquiteto (Alpha) não enfileira para uma única janela. Ele spawna N subagentes
+  # temporários em background para resolverem frações da tarefa em paralelo,
+  # consolidarem o resultado no SwarmState.nesx e se auto-encerrarem.
+*end block
+
+# ── 6. O PADRÃO PORTÁTIL "LINK SIMBÓLICO" (Vigianesx.nesx) ────────────────────
+# Para implementar o Vigianesx em QUALQUER projeto (Unreal Engine, Python, Rust):
+# Basta depositar este arquivo de especificação na raiz do projeto como "Vigianesx.nesx".
+# Qualquer agente IA que for aberto na pasta identificará o manifesto e inicializará
+# o enxame auto-evolutivo instantaneamente em memória!

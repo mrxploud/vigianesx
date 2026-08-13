@@ -1,0 +1,49 @@
+# ============================================================================
+# VigianesxKnowledge.nesx — GRAFO DE CONHECIMENTO & DECISÕES ARQUITETURAIS (ADRs)
+# ----------------------------------------------------------------------------
+# Este arquivo armazena a memória de longo prazo do enxame em formato vetorial
+# leve (indexado por tags).
+# Antes de codificar em qualquer projeto, as IAs consultam este grafo via grep_search
+# por tags relevantes (ex: #niagara_5_8, #cpp_concurrency, #windows_dll) para
+# absorver meses de contexto arquitetural em milissegundos!
+# ============================================================================
+
+*block decisions
+
+  *adr ADR-001
+    title: "Adoção do Protocolo Declarativo Textual (DTP .nesx)"
+    date: "2026-07-26"
+    tags: ["#architecture", "#dtp", "#nesx", "#zero_dependency"]
+    context: "Linguagens tradicionais de config (JSON/YAML) não suportam opcodes, blocos de controle de mutex nem autodescrição de reatividade."
+    decision: "Criar o formato DTP .nesx como Single Source of Truth do enxame cognito Vigianesx (VN)."
+    consequences: "Permite que IAs leiam, editem e estendam a gramática e o estado de enxames sem depender de interpretadores Python externos."
+  *end adr
+
+  *adr ADR-002
+    title: "Mecanismo de Duplo Despertar Reativo (Cron Nativo + Watcher)"
+    date: "2026-07-26"
+    tags: ["#wakeup", "#reactive_cron", "#schedule", "#antigravity"]
+    context: "Scripts de vigia em background (watcher.py) podem falhar ao re-acordar o harness da interface após a conclusão de subcomandos."
+    decision: "Eleger o Agendador Reativo Nativo (ferramenta 'schedule' no núcleo C++/Rust) como reatividade de 1ª classe, mantendo scripts .py apenas para ambientes shell de terceiros."
+    consequences: "Operação 100% Zero-Python e latência de checagem em background de 1 minuto em nível de sistema sem gastar compute à toa."
+  *end adr
+
+  *adr ADR-003
+    title: "Proteção Contra Trava Morta via Heartbeat Ultra-Leve ('AT')"
+    date: "2026-07-26"
+    tags: ["#concurrency", "#mutex", "#heartbeat", "#deadlock_recovery"]
+    context: "Um TTL fixo curto em mutexes pode expirar enquanto uma IA ainda está compilando código C++ pesado, gerando quebras de trava precoces e colisões."
+    decision: "Implementar o token ultra-leve 'AT' (Ainda Trabalhando). A IA ativa renova seu timestamp e emite 'AT' com apenas 2 bytes para prolongar seu lease sem gastar tokens com mensagens verbosas."
+    consequences: "Eliminação total de deadlocks e segurança máxima em compilações longas."
+  *end adr
+
+  *adr ADR-004
+    title: "Ciclo de Vida de Processos no Windows (Auto-Close & Auto-Reopen)"
+    date: "2026-07-26"
+    tags: ["#windows_dll", "#unreal_engine", "#process_lifecycle", "#powershell"]
+    context: "No Windows, tentar compilar DLLs com o Unreal Editor aberto causa erro LNK1104. Pedir ao usuário para fechar e abrir na mão gera fricção inaceitável."
+    decision: "O enxame vigianesx tem a diretriz de inspecionar o processo no PowerShell, fechar graciosamente (Close-MainWindow), compilar/buildar o C++ e REABRIR O APLICATIVO AUTOMATICAMENTE via Start-Process pós-build."
+    consequences: "A IA opera como uma verdadeira fábrica de software autônoma sem exigir cliques ou reinicializações manuais do usuário."
+  *end adr
+
+*end block

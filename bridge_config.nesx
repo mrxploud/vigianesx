@@ -1,0 +1,25 @@
+# bridge_config.nesx — CONFIG DO VIGIANESX (VN) | Sistema Operacional de Enxame
+# Formato DTP (.nesx). Descreve a malha P2P: QUEM conversa com QUEM e ONDE.
+# Versão 4.0.0 (Portátil)
+
+# ── diretorio compartilhado ──
+*set bridge.dir "./"
+
+# ── AGENTE A (Janela 1) ──────────────────────────────────────────────────────
+*set agent.a.name "Antigravity"
+*set agent.a.role "Agent Lead / Native Operator"
+*set agent.a.inbox conversations/alpha_inbox.md           # Alpha LÊ aqui; Beta ESCREVE aqui
+
+# ==== Agente B (Beta) ====
+*set agent.b.name Antigravity-Beta
+*set agent.b.role Engenheiro de Sistemas / Operador de Enxame (Janela 2)
+*set agent.b.inbox conversations/beta_inbox.md            # Beta LÊ aqui; Alpha ESCREVE aqui
+
+# ── parametros ────────────────────────────────────────────────────────────────
+*set bridge.msg_convention "MSG #N — <De> -> <Para> | <assunto>"
+
+# ── MALHA POLIGLOTA v4.0 ──────────────────────────────────────────────────────
+# Cada agente ativa seu mecanismo nativo mais limpo sem depender de scripts .py:
+*set mesh.antigravity "Agendador nativo (ferramenta schedule) no núcleo C++/Rust (Zero-Python)."
+*set mesh.claudecode  "Shell Hook / Watcher reativo no terminal bash/zsh."
+*set mesh.cursor_ci   "GitHub Actions / Webhook local de milissegundos."

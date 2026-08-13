@@ -1,0 +1,56 @@
+# SwarmState.nesx — BLACKBOARD DO VIGIANESX (VN) | Enxame Cognitivo
+# Schema v4.0 | Estado Global Compartilhado para Sincronização IA-a-IA
+# ----------------------------------------------------------------------------
+# Este arquivo é o cérebro central do repositório. As IAs leem e escrevem
+# aqui para coordenar tarefas, locks de concorrência e histórico sem usar Python.
+
+# ── METADADOS DO ENXAME ───────────────────────────────────────────────────────
+*set swarm.engine "Vigianesx (VN) v4.0"
+*set swarm.status "ACTIVE"
+*set swarm.version "4.0.0"
+
+# ── DIRETRIZES ARQUITETONICAS & CONVENÇÕES ────────────────────────────────────
+*block directives
+  *set log_verbosity "DEBUG"
+  *set lock_timeout_seconds 120
+  *set conflict_resolution_strategy "ALPHA_PRIMARY_OVERRIDE"
+*end block
+
+# ── ESTADO E HEARTBEAT DOS AGENTES ────────────────────────────────────────────
+*block agents
+  *agent Alpha
+    role: "Arquiteto-Chefe / Orquestrador"
+    status: "ONLINE (Vigianesx Nativo Zero-Python)"
+    current_focus: "Aguardando próxima diretriz"
+  *end agent
+
+  *agent Beta
+    role: "Engenheiro de Sistemas / Operador de Enxame"
+    status: "ONLINE (Vigianesx Nativo Zero-Python)"
+    current_focus: "Aguardando próxima diretriz"
+  *end agent
+*end block
+
+# ── MUTEX & DISTRIBUTED FILE LOCKS (v4.0 TTL & Heartbeat AT) ──────────────────
+# Regra: Nenhuma IA edita arquivos em paralelo sem antes setar o status aqui para a sua Role.
+*block locks
+  *lock "./conversations/alpha_inbox.md" | owner: "UNLOCKED" | ttl: 120 | last_beat: "-" | status: "FREE"
+  *lock "./conversations/beta_inbox.md" | owner: "UNLOCKED" | ttl: 120 | last_beat: "-" | status: "FREE"
+  *lock "./SwarmState.nesx" | owner: "UNLOCKED" | ttl: 120 | last_beat: "-" | status: "FREE"
+*end block
+
+# ── HISTÓRICO COMPACTADO (GC ATÔMICO — VIGIANESX v4.0) ────────────────────────
+*block history
+  *history "2026-08-12" | "VIGIANESX V4.0 INITIALIZED" | "Blackboard inicializado com sucesso para o novo repositório limpo."
+*end block
+
+# ── STATUS DE TAREFAS & ROADMAP ATIVO ─────────────────────────────────────────
+*block tasks
+  *task TASK-001
+    title: "Boas-vindas ao Vigianesx v4.0 - Hello World do Enxame"
+    assignee: "Alpha"
+    status: "PENDING"
+    priority: "NORMAL"
+    dependencies: []
+  *end task
+*end block
